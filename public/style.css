@@ -1,0 +1,240 @@
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('irctc-special-trains.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    background:rgba(255, 255, 255, 0.5);
+    color: black;
+    text-align: left;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.irctc-logo {
+    max-width: 80px;
+    margin-right: 20px;
+    size: 100%;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    text-align: left;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.booking-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    padding: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #3273dc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2760c7;
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center; /* Center the content horizontally */
+    padding: 10px; /* Add some padding for better appearance */
+    bottom: 0;
+}
+
+ .user-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0077CC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#login-button {
+    background-color: red;
+}
+
+#register-button {
+    background-color: orange;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 120px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Wider modal */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-image: url('irctc-login-official.jpg');
+    background-size: cover;
+}
+
+/* Hover effect */
+.modal-content:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Style for buttons inside the modal */
+.modal-content button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Enhance form elements for better usability */
+.modal-content label {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the 'Remember Me' checkbox */
+.modal-content input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style the 'Forgot Password' link */
+.modal-content a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Center 'Forgot Password' link horizontally */
+.modal-content a {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style the wide table */
+.modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Style the table header */
+.modal-content th {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 50px;
+}
+
+/* Style the table cells */
+.modal-content td {
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+/* Style table rows alternately */
+.modal-content tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}

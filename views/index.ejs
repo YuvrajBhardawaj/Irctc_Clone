@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC - Book Train Ticket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style>
+    <header>
+        <img src="irctc.png " alt="IRCTC Logo" class="irctc-logo">
+        <h1>IRCTC - Book Train Ticket</h1>
+        <div class="user-buttons">
+            <button id="login-button">Login</button>
+            <button id="register-button">Register</button>
+        </div>
+    </header>
+    <main style="background-image: url('irctc-special-trains.jpg')">
+        <section class="booking-form">
+            <h2>Book Train Ticket</h2>
+            <form action="/TrainsSearch" method="POST">
+                <label for="from">From:</label>
+                <input type="text" id="from" name="from" required>
+
+                <label for="to">To:</label>
+                <input type="text" id="to" name="to" required>
+
+                <label for="date">Date of Journey:</label>
+                <input type="date" id="date" name="date" required>
+                <br> 
+                <button type="submit">Search Trains</button>
+            </form>
+        </section>
+    </main>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="login-close-button">&times;</span>
+            <div class="login-form">
+                <h2>Login</h2>
+                <form>
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" placeholder="Enter Username" name="login-username" required>
+
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" placeholder="Enter Password" name="login-password" required>
+
+                    <label for="remember-me">Remember Me:</label>
+                    <input type="checkbox" id="remember-me" name="remember-me">
+
+                    <button type="submit">Login</button>
+                    <a href="forgot_password.html">Forgot Password?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="register-close-button">&times;</span>
+            <div class="register-form">
+                <h2>Register</h2>
+                <form>
+                    <label for="register-username">Username:</label>
+                    <input type="text" id="register-username" placeholder="Enter Username" name="register-username" required>
+
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" placeholder="Enter Password" name="register-password" required>
+
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" name="confirm-password" required>
+
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("login-button").addEventListener("click", function() {
+            document.getElementById("login-modal").style.display = "block";
+        });
+    
+        document.getElementById("register-button").addEventListener("click", function() {
+            document.getElementById("register-modal").style.display = "block";
+        });
+    
+        document.getElementById("login-close-button").addEventListener("click", function() {
+            document.getElementById("login-modal").style.display = "none";
+        });
+    
+        document.getElementById("register-close-button").addEventListener("click", function() {
+            document.getElementById("register-modal").style.display = "none";
+        });
+    </script>   
+    <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="https://contents.irctc.co.in/en/Awards_And_Achievements.pdf">About Us</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: contact@irctc.com</p>
+                    <p>Phone: +123-456-7890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.facebook.com/irctc" target="_blank">Facebook</a><br>
+                    <a href="https://www.linkedin.com/company/irctc" target="_blank">LinkedIn</a><br>
+                    <a href="https://www.instagram.com/irctc_official" target="_blank">Instagram</a>
+                </div>
+            </div>
+        <p>&copy; 2023 IRCTC</p>
+    </footer> 
+</body>
+</html>
+
+

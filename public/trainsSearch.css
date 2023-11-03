@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    background-color: aliceblue;
+    margin-bottom: 10px;
+}
+li{
+    list-style: none;
+    padding: 15px;
+    margin: 15px;
+    border: 2px solid lightblue;
+    border-radius: 20px;
+    font-size: 25px;
+}
+li:hover{
+    background-color: lightblue;
+}
+a{
+    color: blueviolet;
+    font-weight: bolder;
+    text-decoration: none;
+}
+.results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
