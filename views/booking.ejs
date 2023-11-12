@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="book.css">
+    <title>Booking</title>
+</head>
+<body>
+    <nav id="">
+        <a href="/home"><img src="irctc.png" alt="" width="100px"></a>
+        <h2>ID : <%=data%></h2>
+    </nav>
+    <form action="/booked" method="POST">
+    <div id="box">
+        <h2>Train Number</h2>
+        <input type="text" id="trainNo" name="trainNo" value=<%=trainNo%>>
+        <div class="formElement1">
+            <div class="ele1">
+                <label for="name">Name of Passenger</label><br>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="ele2">
+                <label for="gender">Gender</label><br>
+                <input type="text" id="gender" name="gender">
+            </div>
+            <div class="ele3">
+                <label for="ph">Phone Number</label><br>
+                <input type="text" id="ph" name="ph">
+            </div>
+        </div>
+        <div class="formElement1">
+            <div class="ele1">
+                <label for="aadhar">Aadhar Card No.</label><br>
+                <input type="text" id="aadhar" name="aadhar">
+            </div>
+            <div class="ele2">
+                <label for="age">Age</label><br>
+                <input type="text" id="age" name="age">
+            </div>
+            <div class="ele3">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+        </div>
+        <div class="fromElement1">
+            <div class="ele1">
+                <label for="date">Select Journey Date</label><br>
+                <input type="date" id="date" name="date" required>
+            </div>
+        </div>
+        <button id="submit" type="submit">Confirm Booking</button>
+    </div>
+    </form>
+</body>
+</html>

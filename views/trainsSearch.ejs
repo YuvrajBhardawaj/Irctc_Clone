@@ -14,7 +14,7 @@
         <h1>Trains available from <%=data[0].fromStation%> to <%=data[0].toStation%></h1>
         <ul>
             <%data.forEach(d=>{%>
-            <a href=""><li><%=d.trainNo%> <%=d.trainName%> <%=d.seats%> <%=d.fare%></li></a>
+            <a href=<%=d.trainNo%>><li><%=d.trainNo%> <%=d.trainName%> <%=d.seats%> <%=d.fare%></li></a>
             <%})%>
         </ul>
     </div>

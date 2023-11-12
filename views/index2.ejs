@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body style>
-    <header>
+    <header id="navigation">
         <img src="irctc.png " alt="IRCTC Logo" class="irctc-logo">
         <h1>IRCTC - Book Train Ticket</h1>
-        <div class="user-buttons">
-            <button id="login-button">Login</button>
-            <button id="register-button">Register</button>
-        </div>
+        <h2>ID : <%=id%></h2>
     </header>
     
     <main style="background-image: url('irctc-special-trains.jpg')">
@@ -33,50 +30,6 @@
             </form>
         </section>
     </main>
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="login-close-button">&times;</span>
-            
-            <div class="login-form">
-                <h2>Login</h2>
-                <form action="/login" method="POST">
-                    <label for="login-username">Username:</label>
-                    <input type="text" id="login-username" placeholder="Enter Username" name="username" required>
-
-                    <label for="login-password">Password:</label>
-                    <input type="password" id="login-password" placeholder="Enter Password" name="pass" required>
-
-                    <label for="remember-me">Remember Me:</label>
-                    <input type="checkbox" id="remember-me" name="remember-me">
-
-                    <button type="submit">Login</button>
-                    <a href="forgot_password.html">Forgot Password?</a>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="register-close-button">&times;</span>
-            <div class="register-form">
-                <h2>Register</h2>
-                <form>
-                    <label for="register-username">Username:</label>
-                    <input type="text" id="register-username" placeholder="Enter Username" name="register-username" required>
-
-                    <label for="register-password">Password:</label>
-                    <input type="password" id="register-password" placeholder="Enter Password" name="register-password" required>
-
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" placeholder="Confirm Password" name="confirm-password" required>
-
-                    <button type="submit">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
     <script>
         document.getElementById("login-button").addEventListener("click", function() {
             document.getElementById("login-modal").style.display = "block";
@@ -115,5 +68,3 @@
     </footer> 
 </body>
 </html>
-
-

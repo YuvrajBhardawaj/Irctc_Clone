@@ -8,8 +8,8 @@ const pool=mysql.createPool({
     database:process.env.DATABASE
 }).promise()
 
-export async function getData(){
-    const [result]=await pool.query("Select * from auth")
+export async function getData(user,pass){
+    const [result]=await pool.query("Select * from auth where username=? and password=?",[user,pass])
     return result
 }
 
@@ -20,5 +20,10 @@ export async function putData(username,password,email){
 
 export async function trainsData(from,to){
     const [result]=await pool.query("Select * from trainsList where fromStation=? and toStation=?",[from,to])
+    return result
+}
+
+export async function bookTicket(trainNo,id,passengerName,gender,aadhar,email,date){
+    const[result]=await pool.query("INSERT INTO booking VALUES(?,?,?,?,?,?,?)",[trainNo,id,passengerName,gender,aadhar,email,date])
     return result
 }

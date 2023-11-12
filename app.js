@@ -1,5 +1,6 @@
 import express from "express";
-import { getData, putData, trainsData } from "./database.js";
+import { getData, putData, trainsData, bookTicket } from "./database.js";
+import { v4 as uuid4 } from "uuid";
 const app=express()
 app.use(express.json())
 app.set("view engine","ejs")
@@ -7,7 +8,13 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended:true}))
 
 app.get('/home',async(req,res)=>{
-    res.render("index.ejs")
+    if(!req.headers.cookie){
+        res.render("index.ejs")
+    }
+    else{   
+        const id=req.headers.cookie.substr(40);
+        res.render("index2.ejs",{id})
+    }
 })
 app.post('/TrainsSearch',async(req,res)=>{
     const {from,to,date}=req.body
@@ -20,20 +27,19 @@ app.get('/login',async(req,res)=>{
     res.render("login.ejs")
 })
 app.post('/login',async(req,res)=>{
-    try {
-        const data=await getData()
-        const {username,pass}=req.body
-        data.forEach(e=>{
-            console.log(e.username,e.password)
-            console.log(username,pass)
-            if(username===e.username && pass===e.password){
-                res.send("Login Successful")
-                return
-            }
-        })
-    } catch (error) {
-        res.send("Failed")
-    }    
+    const {username,pass}=req.body
+    console.log(username,pass)
+    const data=await getData(username,pass)
+    console.log(data)
+    if(data.length===0){
+        res.send("failed")
+    }
+    else{
+        const sessionId=uuid4()+username;
+        res.cookie("uid",sessionId)
+        res.redirect("/home")
+        // console.log(req.headers.cookie)
+    }
 })
 
 app.get('/register',async(req,res)=>{
@@ -55,6 +61,21 @@ app.post('/register',async(req,res)=>{
     // else{
     //     res.render("Failed")
     // }
+})
+
+app.get('/:id',async(req,res)=>{
+    const trainNo=req.params.id
+    //console.log(trainNo)
+    const data=req.headers.cookie.substring(40);
+    res.render("booking.ejs",{data,trainNo})
+})
+app.post('/booked',async(req,res)=>{
+    const {trainNo,name,gender,ph,aadhar,age,email,date}=req.body
+    console.log(name,gender,ph,aadhar,age,email,date,trainNo)
+    const usrId=req.headers.cookie.substring(40)
+   // console.log(id)
+    //const data=await bookTicket()
+    res.send("Booked")
 })
 
 app.listen(3000,()=>{
