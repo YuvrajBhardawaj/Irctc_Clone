@@ -74,7 +74,7 @@ app.post('/booked',async(req,res)=>{
     console.log(name,gender,ph,aadhar,age,email,date,trainNo)
     const usrId=req.headers.cookie.substring(40)
    // console.log(id)
-    //const data=await bookTicket()
+    const data=await bookTicket(trainNo,usrId,name,gender,age,aadhar,email,date)
     res.send("Booked")
 })
 

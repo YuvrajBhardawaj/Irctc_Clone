@@ -23,7 +23,7 @@ export async function trainsData(from,to){
     return result
 }
 
-export async function bookTicket(trainNo,id,passengerName,gender,aadhar,email,date){
-    const[result]=await pool.query("INSERT INTO booking VALUES(?,?,?,?,?,?,?)",[trainNo,id,passengerName,gender,aadhar,email,date])
+export async function bookTicket(trainNo,id,passengerName,gender,age,aadhar,email,date){
+    const[result]=await pool.query("INSERT INTO booking VALUES(?,?,?,?,?,?,?,?)",[trainNo,id,passengerName,gender,age,aadhar,email,date])
     return result
 }
