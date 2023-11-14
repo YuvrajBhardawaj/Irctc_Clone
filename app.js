@@ -9,6 +9,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.get('/home',async(req,res)=>{
     if(!req.headers.cookie){
+        console.log(req.headers.cookie)
         res.render("index.ejs")
     }
     else{   
@@ -17,15 +18,13 @@ app.get('/home',async(req,res)=>{
     }
 })
 app.post('/TrainsSearch',async(req,res)=>{
-    const {from,to,date}=req.body
+    const {from,to}=req.body
     const data=await trainsData(from,to)
     console.log(data)
     res.render("trainsSearch.ejs",{data})
 })
 //render
-app.get('/login',async(req,res)=>{
-    res.render("login.ejs")
-})
+
 app.post('/login',async(req,res)=>{
     const {username,pass}=req.body
     console.log(username,pass)
@@ -40,10 +39,6 @@ app.post('/login',async(req,res)=>{
         res.redirect("/home")
         // console.log(req.headers.cookie)
     }
-})
-
-app.get('/register',async(req,res)=>{
-    res.render("register.ejs")
 })
 
 app.post('/register',async(req,res)=>{
@@ -66,16 +61,16 @@ app.post('/register',async(req,res)=>{
 app.get('/:id',async(req,res)=>{
     const trainNo=req.params.id
     //console.log(trainNo)
-    const data=req.headers.cookie.substring(40);
+    const data=req.headers.cookie.substr(40);
     res.render("booking.ejs",{data,trainNo})
 })
 app.post('/booked',async(req,res)=>{
     const {trainNo,name,gender,ph,aadhar,age,email,date}=req.body
     console.log(name,gender,ph,aadhar,age,email,date,trainNo)
-    const usrId=req.headers.cookie.substring(40)
+    const usrId=req.headers.cookie.substr(40)
    // console.log(id)
     const data=await bookTicket(trainNo,usrId,name,gender,age,aadhar,email,date)
-    res.send("Booked")
+    res.render("loading.ejs")
 })
 
 app.listen(3000,()=>{
