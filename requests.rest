@@ -1,9 +1,0 @@
-GET http://localhost:3000/login
-###
-
-POST http://localhost:3000//login
-Content-Type: application/json
-{
-    "username":"YuvrajAbhinav",
-    "pass":"123456"
-}
