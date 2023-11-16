@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../book.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Booking</title>
+    <style>
+        .loader{
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 5px solid #ddd;
+            border-top-color: #333;
+            animation: rotate 1s infinite;
+        }
+        h4{
+            color: blueviolet;
+        }
+        @keyframes rotate {
+            100%{
+                rotate: 360deg;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="">
+        <a href="/home"><img src="../irctc.png" alt="" width="100px"></a>
+        <h4>ID : <%=data%></h4>
+    </nav>
+    <form action="/booked" method="POST">
+    <div id="box">
+        <h4>Train Number</h4>
+        <input type="text" aria-label="readonly input example" name="trainNo" readonly value=<%=trainNo%>>
+        <div class="formElement1">
+            <div class="ele1">
+                <label for="name">Name of Passenger</label><br>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="ele2">
+                <label for="gender">Gender</label><br>
+                <input type="text" id="gender" name="gender">
+            </div>
+            <div class="ele3">
+                <label for="ph">Phone Number</label><br>
+                <input type="text" id="ph" name="ph">
+            </div>
+        </div>
+        <div class="formElement1">
+            <div class="ele1">
+                <label for="aadhar">Aadhar Card No.</label><br>
+                <input type="text" id="aadhar" name="aadhar">
+            </div>
+            <div class="ele2">
+                <label for="age">Age</label><br>
+                <input type="text" id="age" name="age">
+            </div>
+            <div class="ele3">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+        </div>
+        <div class="fromElement1">
+            <div class="ele1">
+                <label for="date">Select Journey Date</label><br>
+                <input type="date" id="date" name="date" required>
+            </div>
+        </div>
+        <button id="submit" type="submit">Confirm Booking</button>
+    </div>
+    </form>
+</body>
+</html>
