@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking History</title>
+    <style>
+        table{
+            border-radius: 10px;
+            border-collapse: collapse;
+            width: 900px;
+            
+        }
+        tr{
+            border: 1px solid blue;
+            
+        }
+        td{
+            text-align: left;
+            padding: 10px;
+            margin: 10px;
+        }
+        tr:hover{
+            background-color: rgb(79, 196, 250);
+        }
+    </style>
 </head>
 <body>
     <%data.forEach(d=>{%>
-        <a href="#">><li><%=d.trainNo%> <%=d.passengerName%> <%=d.date%></li></a>
+        <table>
+            <tr>
+                <td><%=d.trainNo%></td></a>
+                <td><%=d.passengerName%></td>
+                <td><%=d.date.toString().substr(0,15)%></td>
+            </tr>
+        </table>
         <%})%>
 </body>
 </html>

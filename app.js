@@ -73,10 +73,15 @@ app.post('/booked',async(req,res)=>{
     const data=await bookTicket(trainNo,usrId,name,gender,age,aadhar,email,date)
     res.render("loading.ejs")
 })
-app.get('/bookedTicketsHistory',async(req,res)=>{
+app.get('/bookinghistory',async(req,res)=>{
     const userID=req.headers.cookie.substring(40)
     const data=await bookedTicketsHistory(userID)
     res.render("bookedtickets.ejs",{data})
+})
+
+app.get('/loggingOut',async(req,res)=>{
+    res.clearCookie('uid')
+    res.redirect('/home')
 })
 app.listen(3000,()=>{
     console.log("Server started")
