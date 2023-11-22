@@ -1,5 +1,5 @@
 import express from "express";
-import { getData, putData, trainsData, bookTicket, bookedTicketsHistory } from "./database.js";
+import { getData, putData, trainsData, bookTicket, bookedTicketsHistory, cancelTicket } from "./database.js";
 import { v4 as uuid4 } from "uuid";
 const app=express()
 app.use(express.json())
@@ -76,12 +76,17 @@ app.post('/booked',async(req,res)=>{
 app.get('/bookinghistory',async(req,res)=>{
     const userID=req.headers.cookie.substring(40)
     const data=await bookedTicketsHistory(userID)
-    res.render("bookedtickets.ejs",{data})
+    res.render("bookedtickets.ejs",{data,userID})
 })
 
 app.get('/loggingOut',async(req,res)=>{
     res.clearCookie('uid')
     res.redirect('/home')
+})
+app.post('/CancelTicket',async(req,res)=>{
+    const {trainNo,username,passengerName}=req.body
+    console.log(trainNo,username,passengerName)
+    const data=await cancelTicket(trainNo,username,passengerName)
 })
 app.listen(3000,()=>{
     console.log("Server started")

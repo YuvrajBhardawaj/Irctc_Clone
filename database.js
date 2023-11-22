@@ -29,6 +29,11 @@ export async function bookTicket(trainNo,id,passengerName,gender,age,aadhar,emai
 }
 
 export async function bookedTicketsHistory(userID){
-    const [result]=await pool.query("SELECT * from booking where username=?",[userID])
+    const [result]=await pool.query("SELECT * from booking b JOIN trainslist t ON b.trainNo=t.trainNo where username=?",[userID])
+    return result
+}
+
+export async function cancelTicket(trainNo,username,pName){
+    const [result]=await pool.query("CALL cancelTicket(?,?,?)",{username,trainNo,pName})
     return result
 }

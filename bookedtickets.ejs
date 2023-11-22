@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Booking History</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            background-color: aliceblue;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+        }
+        .tk{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid blue;
+            border-radius: 15px;
+            margin: 25px;
+        }
+        .tk:hover{
+            background-color: aqua;
+        }
+        .d1,.d2{
+            display: flex;
+            padding: 5px 30px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        #cancel{
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 15px;
+        }
+        #cancel:hover{
+            background-color: aliceblue;
+            color: orange;
+            cursor: pointer;
+        }
+        input{
+            background-color: transparent;
+            border: 1px solid;
+            cursor: unset;
+        }
+        #name{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <nav id="">
+        <a href="/home"><img src="../irctc.png" alt="" width="100px"></a>
+        <h4>ID : <%=userID%></h4>
+    </nav>
+    <form action="/CancelTicket" method="POST">
+    <div class="tickets">
+        <%data.forEach(d=>{%>
+            <div class="tk">
+                <input type="text" aria-label="readonly input example" name="username" readonly value=<%=userID%>>
+                    <div class="d1">
+                        <div><input type="text" aria-label="readonly input example" name="trainNo" readonly value=<%=d.trainNo%>></div>
+                        <div><input type="text" aria-label="readonly input example" id="name" name="passengerName" readonly value=<%=d.passengerName%>></div>
+                    </div>
+                    <div class="d2">
+                        <div><%=d.fromStation%> to <%=d.toStation%></div>
+                        <div><%=d.date.toString().substr(0,15)%></div>
+                    </div>
+                    <div>
+                        <button id="cancel" type="submit">CANCEL</button>
+                    </div>
+            </div>
+        <%})%>
+    </div>
+    </form>
+    <!-- <%data.forEach(d=>{%>
+        <table>
+            <tr>
+                <td><%=d.trainNo%></td></a>
+                <td><%=d.passengerName%></td>
+                <td><%=d.date.toString().substr(0,15)%></td>
+            </tr>
+        </table>
+        <%})%> -->
+</body>
+</html>
