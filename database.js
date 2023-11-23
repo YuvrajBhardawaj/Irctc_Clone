@@ -34,6 +34,14 @@ export async function bookedTicketsHistory(userID){
 }
 
 export async function cancelTicket(trainNo,username,pName){
-    const [result]=await pool.query("CALL cancelTicket(?,?,?)",{username,trainNo,pName})
+    console.log(trainNo,username,pName)
+    const [result]=await pool.query("CALL cancelTicket(?,?,?)",[username,trainNo,pName])
+    return result
+}
+
+export async function fetchOne(trainNo,pName,userID){
+    // console.log(trainNo,userID,pName)
+    const [result]=await pool.query("Select * from booking where username=? and trainNo=? and passengerName=?",[userID,trainNo,pName])
+    // console.log(result)
     return result
 }

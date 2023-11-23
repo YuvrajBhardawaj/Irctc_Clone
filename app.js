@@ -1,5 +1,5 @@
 import express from "express";
-import { getData, putData, trainsData, bookTicket, bookedTicketsHistory, cancelTicket } from "./database.js";
+import { getData, putData, trainsData, bookTicket, bookedTicketsHistory, cancelTicket, fetchOne } from "./database.js";
 import { v4 as uuid4 } from "uuid";
 const app=express()
 app.use(express.json())
@@ -84,9 +84,21 @@ app.get('/loggingOut',async(req,res)=>{
     res.redirect('/home')
 })
 app.post('/CancelTicket',async(req,res)=>{
-    const {trainNo,username,passengerName}=req.body
-    console.log(trainNo,username,passengerName)
+    const {trainNo,passengerName}=req.body
+    const username=req.headers.cookie.substring(40)
+    // console.log(trainNo,username,passengerName)
     const data=await cancelTicket(trainNo,username,passengerName)
+    res.redirect('/home')
+    // console.log(data)
+})
+app.get('/bookedtickets/:trainNo&:pName',async(req,res)=>{
+    const trainNo=req.params.trainNo
+    const pName=req.params.pName
+    const userId=req.headers.cookie.substring(40)
+    const d=await fetchOne(trainNo,pName,userId)
+    // console.log(d[0])
+    // console.log(d)
+    res.render("ticketDetails.ejs",{d})
 })
 app.listen(3000,()=>{
     console.log("Server started")
