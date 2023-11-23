@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Ticket Details</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .for{
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid orange;
+            border-radius: 30px;
+            margin: 20px;
+        }
+        .c1{
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        input{
+            border: none;
+            cursor: unset;
+        }
+        #cancel{
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 30px;
+            margin: 30px;
+        }
+        #cancel:hover{
+            background-color: aliceblue;
+            color: orange;
+            cursor: pointer;
+        }
+        div,input{
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/home"><img src="../irctc.png" alt="" width="100px"></a>
+    </nav>
+    <form action="/CancelTicket" method="POST">
+    <div class="for">
+        <div class="c1">
+            <div>Train No : <input type="text" aria-label="readonly input example" name="trainNo" readonly value=<%=d[0].trainNo%>></div>
+            <div>Gender : <%=d[0].gender%></div>
+            
+        </div>
+        <div class="c1">
+            <div>Passenger Name : <input type="text" aria-label="readonly input example" name="passengerName" readonly value=<%=d[0].passengerName%>></div>
+            <div>Aadhar Card : <%=d[0].aadhar%></div>
+            <div>Date : <%=d[0].date.toString().substr(0,16)%></div>
+            <div>Age : <%=d[0].age%></div>
+        </div>
+        <div>
+            <!-- Button trigger modal -->
+<button type="button" id="cancel" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    CANCEL
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to cancel the ticket. 25% of the ticket fee only be refunded
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
